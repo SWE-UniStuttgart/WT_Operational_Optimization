@@ -1,21 +1,26 @@
 
-clear CompMetrics 
-% OPtFile = 'DK_2018_Optimize_revenue_Bins_loadN_noSorting_whole_year_hor';
-% BaseFile = 'Baseline_DK_2018_spl';
-% load (['D:\data\34_pettas\PhD\Optimization\Results\' OPtFile])
-% Baseline = load (['D:\data\34_pettas\PhD\Optimization\Final\Baseline Results all\Spline\' BaseFile]);
+clearvars
+close all
+clc
+
+%Script to plot results from an optimized file compare to the baseline
+
+OPtFile = '..\Results\DE_all_DayPrev_LOAD_constTSR.mat';
+BaseFile = '..\Results\Baseline_DE_all_spl.mat';
+load (OPtFile)
+Baseline = load (BaseFile);
 
 
-%% Binning to values 
+%% Binning to values
 %%%%% try to bin the get the binned response here
 % 1 bin data to wsp-V pairs
 % 2 go through the TS tresponse and assign the damage and revenue value to each bin
-% 3 sum the values in the bins bins 
-% 4 
-clear dat aa daty Binnedy
+% 3 sum the values in the bins bins
+% 4
+
 in.Output = Output;
- [Binnedy{1},dat{1}] = GetBinnedVals(Baseline);
- [Binnedy{2},dat{2}] = GetBinnedVals(in);
+[Binnedy{1},dat{1}] = GetBinnedVals(Baseline);
+[Binnedy{2},dat{2}] = GetBinnedVals(in);
 
 
 %% plotting
@@ -120,7 +125,7 @@ clear Ddam
 % % xlim([min(dat.Prbins) max(dat.Prbins)])
 % % ylim([min(dat.Vbins) max(dat.Vbins)])
 % % title('TBMy')
-% 
+%
 
 
 % figure;plot(Output.options.control.FunSettings.optimizer{1, 1}.Vbins ,10*Output.options.control.FunSettings.optimizer{1, 1}.Values(1,1:length(Output.options.control.FunSettings.optimizer{1, 1}.Vbins)),LineWidth=2)
@@ -184,7 +189,7 @@ set(gca,'xtick',[1:length(loadChans)],'xticklabel',loadChans,'TickLabelInterpret
 
 
 
-%% Functions 
+%% Functions
 function [Binnedy,dat] = GetBinnedVals(in)
 Output = in.Output;
 dat.Vedge = 3:1:25;
@@ -197,39 +202,39 @@ dat.Predge = 0:dat.dp:max(dat.Price)+dat.dp;
 dat.Prbins= dat.dp/2:dat.dp:max(dat.Predge)-dat.dp/2;
 [~,~,~,dat.binV,dat.binPr]=histcounts2(dat.V,dat.Price,dat.Vedge,dat.Predge);
 for iV =1:length(dat.Vbins)
-    daty.curIV =  find(dat.binV==iV);  
-    for iPr = 1:length(dat.Prbins)     
-      if isempty(daty.curIV)
-          Binnedy.Rev(iV,iPr) = 0;
-          Binnedy.Pow(iV,iPr) = 0;
-          Binnedy.DAM.BROop(iV,iPr) = 0;
-          Binnedy.DAM.TBMy(iV,iPr) = 0;
-          Binnedy.DAM.BRMz(iV,iPr) = 0;
-          Binnedy.DAM.LSSTq(iV,iPr) = 0; 
-          Binnedy.DAM.TTMx(iV,iPr) = 0; 
-      else     
-          curr.Ind1 = find(dat.binPr(daty.curIV)==iPr); % find the indices of the V bins (curIV is mapped to binV) 
-          if isempty(curr.Ind1)
-              Binnedy.Rev(iV,iPr) = 0;
-              Binnedy.Pow(iV,iPr) = 0;
-              Binnedy.DAM.BROop(iV,iPr) = 0;
-              Binnedy.DAM.TBMy(iV,iPr) = 0;
-              Binnedy.DAM.BRMz(iV,iPr) = 0;
-              Binnedy.DAM.LSSTq(iV,iPr) = 0;
-              Binnedy.DAM.TTMx(iV,iPr) = 0; 
-          else
-              curr.Ind2 = daty.curIV(curr.Ind1); % finding the indices corresponding to the operating only conditions
-              aa  = dat.Indon(curr.Ind2);  % mapping the index back to the global index of the general TS. Brain fuck!
-              Binnedy.Rev(iV,iPr) = sum(Output.inst.Revenue(aa,1));
-              Binnedy.Pow(iV,iPr) = 10*mean(Output.inst.Prat(aa,1));
-              Binnedy.DAM.BROop(iV,iPr) = sum(Output.inst.DAM.BROop(aa,1));
-              Binnedy.DAM.TBMy(iV,iPr) = sum(Output.inst.DAM.TBMy(aa,1));
-              Binnedy.DAM.BRMz(iV,iPr) = sum(Output.inst.DAM.BRMz(aa,1));
-              Binnedy.DAM.LSSTq(iV,iPr) = sum(Output.inst.DAM.LSSTq(aa,1));
-              Binnedy.DAM.TTMx(iV,iPr) = sum(Output.inst.DAM.TTMx(aa,1)); 
-          end
-      end
-      clear aa curr
+    daty.curIV =  find(dat.binV==iV);
+    for iPr = 1:length(dat.Prbins)
+        if isempty(daty.curIV)
+            Binnedy.Rev(iV,iPr) = 0;
+            Binnedy.Pow(iV,iPr) = 0;
+            Binnedy.DAM.BROop(iV,iPr) = 0;
+            Binnedy.DAM.TBMy(iV,iPr) = 0;
+            Binnedy.DAM.BRMz(iV,iPr) = 0;
+            Binnedy.DAM.LSSTq(iV,iPr) = 0;
+            Binnedy.DAM.TTMx(iV,iPr) = 0;
+        else
+            curr.Ind1 = find(dat.binPr(daty.curIV)==iPr); % find the indices of the V bins (curIV is mapped to binV)
+            if isempty(curr.Ind1)
+                Binnedy.Rev(iV,iPr) = 0;
+                Binnedy.Pow(iV,iPr) = 0;
+                Binnedy.DAM.BROop(iV,iPr) = 0;
+                Binnedy.DAM.TBMy(iV,iPr) = 0;
+                Binnedy.DAM.BRMz(iV,iPr) = 0;
+                Binnedy.DAM.LSSTq(iV,iPr) = 0;
+                Binnedy.DAM.TTMx(iV,iPr) = 0;
+            else
+                curr.Ind2 = daty.curIV(curr.Ind1); % finding the indices corresponding to the operating only conditions
+                aa  = dat.Indon(curr.Ind2);  % mapping the index back to the global index of the general TS. Brain fuck!
+                Binnedy.Rev(iV,iPr) = sum(Output.inst.Revenue(aa,1));
+                Binnedy.Pow(iV,iPr) = 10*mean(Output.inst.Prat(aa,1));
+                Binnedy.DAM.BROop(iV,iPr) = sum(Output.inst.DAM.BROop(aa,1));
+                Binnedy.DAM.TBMy(iV,iPr) = sum(Output.inst.DAM.TBMy(aa,1));
+                Binnedy.DAM.BRMz(iV,iPr) = sum(Output.inst.DAM.BRMz(aa,1));
+                Binnedy.DAM.LSSTq(iV,iPr) = sum(Output.inst.DAM.LSSTq(aa,1));
+                Binnedy.DAM.TTMx(iV,iPr) = sum(Output.inst.DAM.TTMx(aa,1));
+            end
+        end
+        clear aa curr
     end
     clear daty
 end

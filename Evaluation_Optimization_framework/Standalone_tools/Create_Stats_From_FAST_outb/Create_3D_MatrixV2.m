@@ -4,13 +4,11 @@ close all
 
 %Script to get the stat files and create the turbine repsonse 3d response
 %over WSP, TI and power output of controllers
-%
-% TODOs
-% -Add mean value except DEL for all load channels
+
 
 %% INPUT
 
-folderCnt = 'D:\data\34_pettas\PhD\Simulations\All_constTSR\'; % general folder path with all the results of a controller
+folderCnt = 'yourPathHere\Simulations\All_constTSR\'; % general folder path with all the results of a controller
 
 %Define the dimensions to be read
 TIvec = 2:2:24;

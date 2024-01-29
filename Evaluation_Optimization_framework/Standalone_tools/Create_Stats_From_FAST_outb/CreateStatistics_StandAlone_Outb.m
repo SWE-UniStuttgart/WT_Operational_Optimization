@@ -5,10 +5,10 @@ function Stats = CreateStatistics_StandAlone_Outb(TimeToCut,ResultFileName)
 %
 % Dependency: sig2ext rainflow ReadFASTbinary
 
-% -ResultFileName: full path to the file including file name not the stats part. The output will be
+% -ResultFileName: full path to the file including file name not the stats part. 
 % -Time to cut time in seconds to cut from the simulation
-% ResultFileName='D:\Dropbox\SWE\PhD_Topic\ControllerAndSimulation\Simulations\Test_turb_Setpoint\Test_turb_constTSR_IPC\Test_turb_constTSR_IPC_P5_WSP12.SFunc.outb';
-% TimeToCut =60;
+
+% Example: Stats =CreateStatistics_StandAlone_Outb(60,'ExampleFiles\constTSR_IPC_P8d5_WSP18_TI02_SD1.SFunc.outb'
 
 %% Create inputs
 % TimeToCut = Parameter.post.TimeToCut;
