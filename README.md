@@ -1,5 +1,5 @@
 # WT_Operational_Optimization
-Evaluation/optimization framework for fatigue damage and revenue accumulation using adaptive control based on electricity prices and wind conditions. It includes the work done in the PhD thesis "Wind turbine operational optimization considering revenue and fatigue damage objectives" by Vasilis Pettas.
+Evaluation/optimization framework for fatigue damage and revenue accumulation using adaptive control based on electricity prices and wind conditions. It includes the work done in the PhD thesis "Wind turbine operational optimization considering revenue and fatigue damage objectives" and relevant publications by Vasilis Pettas.
 
 The main script is the **_Evaluation_Optimization_Framework.m_**. Here the user can define the input data and choose the different options allowing for simulation with different operational approaches. The various operational modes and optimization approaches can be selected and adjusted in the script's **INPUTS** and **Control mode options** sections. 
 
@@ -22,6 +22,7 @@ Details about the different options and definitions can be found as comments in 
 The surrogate models including the Gaussian process regression model (not included here) and relevant code for creating and generating the prediction of the surrogates can be found at https://doi.org/10.5281/zenodo.10092271
 
 Result files from the application of the framework presented in the PhD thesis and other publications using the datasets provided here can be found at https://doi.org/10.5281/zenodo.10580236
+
 
 # Related publications
 
