@@ -8,7 +8,7 @@ function Stats = CreateStatistics_StandAlone_Outb(TimeToCut,ResultFileName)
 % -ResultFileName: full path to the file including file name not the stats part. 
 % -Time to cut time in seconds to cut from the simulation
 %
-% Example: Stats =CreateStatistics_StandAlone_Outb(60,'ExampleFiles\constTSR_IPC_P8d5_WSP18_TI02_SD1.SFunc.outb'
+% Example application: Stats = CreateStatistics_StandAlone_Outb(60,'ExampleFiles\constTSR_IPC_P8d5_WSP18_TI02_SD1.SFunc.outb')
 %
 % Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
