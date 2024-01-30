@@ -1,6 +1,8 @@
 function Out = Get_sorted_weighted_bins(Baseline,Bins)
 
 % sorting the bins according to their contribution to revenue and DEL
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
 % Go through each bin and addthe value of damage and revenue
 for iV = 1:size(Bins.Prdisc,1)

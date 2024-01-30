@@ -3,6 +3,9 @@ function Out = BinData(inData,V_bin,Price_bin_size)
 % binning the data to wsp and price bins and evaluating their
 % contributions to Damage and  Revenue based on the input time series.
 % These will be fed (sorted) to the optimizer to assign values per bin
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
+
 
 bin.V.edge = 4:V_bin:24;         %  only consider conditions where the turbine operates
 bin.V.dbin = bin.V.edge(2)-bin.V.edge(1);

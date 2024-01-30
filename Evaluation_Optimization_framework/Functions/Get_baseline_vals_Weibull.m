@@ -5,6 +5,8 @@ function Output = Get_baseline_vals_Weibull(Data,surrogate,Prat,surrogate_type,W
 % series.
 % The response includes basic loads, power and revenue as cumulative values that
 % will be used later with the optimizer.
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
 
 Ind.Shut = find(Data.Price<=0 | Data.V<4 | Data.V>24 | isnan(Data.Price) )';

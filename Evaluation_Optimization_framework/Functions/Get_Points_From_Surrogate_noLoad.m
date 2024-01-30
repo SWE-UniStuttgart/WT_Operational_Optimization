@@ -1,17 +1,9 @@
+% Function predicting the response of the surrogate model by interpolation 
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
+
 function Out = Get_Points_From_Surrogate_noLoad(Vreq,TIreq,Preq,sur_matrix,interp_type)
-% close all
 
-%% INPUT
-
-% constTSR = load([surrogate_path '\constTSR' extension '.mat']);  % VxTIxP
-% constTSR_IPC = load([surrogate_path '\constTSR_IPC' extension '.mat']); % VxTIxP
-% lin70 = load([surrogate_path '\lin70' extension '.mat']);  % VxTIxP
-% lin70_IPC = load([surrogate_path '\lin70_IPC' extension '.mat']);  % VxTIxP
-
-% Vreq = 12; %Mean wind speed in m/s (DIM1) 4-24 range
-% TIreq = 20;  % TI in %  (DIM2) 2-24 range
-% Preq = 5:0.1:13;
-%% Calculations
 
 % Matlab native interpolation for gridded data linear,cubic,makima,spline
 

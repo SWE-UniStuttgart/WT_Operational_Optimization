@@ -9,6 +9,9 @@ function [Prat_out,optoptions,wohler] = Optimize_P_Sorting_MultiSensor (SortBins
 % - Objective function should come at the end of each function (as function in a function). This will make it easier to keep track
 % - Feed to fmincon inputs, actions, options
 % - when considering TS input instead the sorting is done only on below/above rated wind speed
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
+
 
 for i =1:length(FunSettings.loadsens)
     if any(strcmp (FunSettings.loadsens{i},{'BROop';'BRIp';'BRMy';'BRMx';'BRMz'}))

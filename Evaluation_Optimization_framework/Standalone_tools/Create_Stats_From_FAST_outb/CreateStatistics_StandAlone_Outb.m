@@ -4,24 +4,22 @@ function Stats = CreateStatistics_StandAlone_Outb(TimeToCut,ResultFileName)
 % post process the stats again
 %
 % Dependency: sig2ext rainflow ReadFASTbinary
-
+%
 % -ResultFileName: full path to the file including file name not the stats part. 
 % -Time to cut time in seconds to cut from the simulation
-
+%
 % Example: Stats =CreateStatistics_StandAlone_Outb(60,'ExampleFiles\constTSR_IPC_P8d5_WSP18_TI02_SD1.SFunc.outb'
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
 %% Create inputs
-% TimeToCut = Parameter.post.TimeToCut;
-% TSobj= logsout{1}.Values.OutData(:,1);
-% DataAll_init = TSobj.Data(TimeToCut:end,:);
+
 [DataAll_init,Chanels,~,~,~] = ReadFASTbinary(ResultFileName);
 TimeVec = round([DataAll_init(1,1):DataAll_init(end,1)/(length( DataAll_init(:,1))-1):DataAll_init(end,1)]',3);
 timeinterval = find(TimeVec(:,1)==TimeToCut):size(TimeVec,1);
 TimeVec = TimeVec(timeinterval,:);
 DataAll = DataAll_init(timeinterval,:);
-% PitchRateIn  = TSobjY.y.theta_dot.Data(timeinterval,:);
-% GenTq = TSobjY.y.Omega_g.Data(timeinterval,:); % it is also in the FAst outputs. Check if this fits better
-% time = DataAll(:,1); % assume always time coming first
+
 
 %% Do calculations for all the channels (first channel is time!)
 

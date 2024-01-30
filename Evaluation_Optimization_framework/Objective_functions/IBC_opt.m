@@ -1,6 +1,7 @@
 % The optimization function for IBC only. It takes the current
 % conditions and evaluates whether to switch IBC on.
-
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
 
 function [IBCon] = IBC_opt(V,Power,TI,FunSettings)

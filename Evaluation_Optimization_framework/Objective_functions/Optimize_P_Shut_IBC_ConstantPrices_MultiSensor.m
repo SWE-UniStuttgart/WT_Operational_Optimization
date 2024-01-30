@@ -11,12 +11,9 @@ function [Prat_out,optoptions,Thresholds] = Optimize_P_Shut_IBC_ConstantPrices_M
 % - Get the surrogate response based on the bin mean (or median) value
 % - Objective function  evaluates Delta to damage and revenue compared to baseline for a given set of P levels per bin
 % - Call the optimizer fmincon,ga,gamultiobj, multistart
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
-
-% wDAM = 0.2; %weigthing in objective function for DEL delta
-% wREV = 0.8; %weigthing in objective function for revenue delta
-% PenaltyRev = -0.5 ; % percentage value of reduction in revenue above which penalty is applied to the output of the objective function
-% PenaltyDam = 5; %  percentage value of increase in revenue above which penalty is applied to the output of the objective function
 
 for i =1:length(FunSettings.loadsens)
     if any(strcmp (FunSettings.loadsens{i},{'BROop';'BRIp';'BRMy';'BRMx';'BRMz'}))

@@ -2,9 +2,8 @@
 % annd above wind speeds to determine whether to boost and at what level.
 % There is no optimization involved it is a static feeforward with thresholds on
 % conditions
-
-% To do: 
-% Add thresholds for wsp and TI
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
 function [Plevel,FunSettings] = Boost_opt(V,Pr,TI,Pcurve,FunSettings)
 

@@ -3,14 +3,8 @@ function [Prat_out,optoptions] = Optimize_P_Shut_IBC_WeibOnly(TSData,FunSettings
 
 % Getting an omld results based on constant prices with weibull
 % optimization and applying it on a fluctuating prices
-
-
-% wDAM = 0.2; %weigthing in objective function for DEL delta
-% wREV = 0.8; %weigthing in objective function for revenue delta
-% PenaltyRev = -0.5 ; % percentage value of reduction in revenue above which penalty is applied to the output of the objective function
-% PenaltyDam = 5; %  percentage value of increase in revenue above which penalty is applied to the output of the objective function
-
-
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
 %% Get the wsp bins
 

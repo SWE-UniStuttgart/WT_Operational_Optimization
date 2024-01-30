@@ -3,9 +3,9 @@ function Output = Get_baseline_vals(Data,surrogate,Prat,surrogate_type)
 % Getting the response for the case where the Power is constant to Prat.
 % The response includes basic loads, power and revenue as time series that
 % will be used later by the optimizer.
+%
+% Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 
-% TODo:
-% -
 
 % Pre-calculate GPR response it is much faster
 

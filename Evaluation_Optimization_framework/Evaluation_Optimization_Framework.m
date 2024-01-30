@@ -1,5 +1,4 @@
-%
-%
+
 % Evaluation of accumulated response of the wind turbine over a time series
 % of wind conditions and prices. For each time step of the series a control
 % mode is provided (through optimization or as a constant). The 
@@ -9,7 +8,8 @@
 %
 % Vasilis Pettas, Stuttgart Wind Energy (SWE), University of Stuttgart
 %
-%
+
+
 clearvars
 close all
 clc
@@ -45,7 +45,7 @@ flags.save.savematname = [pwd '\Results\Test.mat'];% if savemat flag is on
 
 %%% Settings control and optimization
 %flag to choose between a constant control mode or flexible
-options.control.mode = 10;
+options.control.mode = 9;
 % 1:constant all no optimization choose power level and IBC activation no optimizer
 % 2:Based on selective shut down only and manual thresholds no optimizer
 % 3:Based on IBC only and manual thresholds no optimizer
@@ -1003,8 +1003,8 @@ if ib==1
     Output.cum.DAM.LSSTq = cumsum(Output.inst.DAM.LSSTq(:,1));
 else
     %     PrevL = length(Output.cum.Energy);
-    Output.cum.Energy = cumsum(Output.inst.Energy(:,1));%[Output.cum.Energy(1:end-1,1);cumsum([Output.cum.Energy(end,1);Output.inst.Energy(PrevL+1:end,1)])] ;
-    Output.cum.Revenue = cumsum(Output.inst.Revenue(:,1)); %[Output.cum.Revenue(1:end-1,1) ;cumsum([Output.cum.Revenue(end,1) ;Output.inst.Revenue(PrevL+1:end,1)])] ;
+    Output.cum.Energy = cumsum(Output.inst.Energy(:,1));
+    Output.cum.Revenue = cumsum(Output.inst.Revenue(:,1)); 
     Output.cum.BlPitchTrav = cumsum(Output.inst.BlPitchTrav(:,1)) ;
 
     Output.cum.DAM.TBMx = cumsum(Output.inst.DAM.TBMx(:,1));
@@ -1056,241 +1056,3 @@ CompToBase.ShutRelPerc  = 100*(Output.metrics.ShutDown.Perc/Baseline.Output.metr
 CompToBase.ShutHoursDiff = Output.metrics.ShutDown.hours-Baseline.Output.metrics.ShutDown.hours;
 CompToBase.ShutAbsHoursPerc = 100*CompToBase.ShutHoursDiff/time_cnt;
 end
-
-% function DELinst = assignInstDEL(cur_surResponse,instVec,flagoff)
-%
-% if flagoff ==1
-%     cur_surResponse.TBMx.mean = 0;
-%     cur_surResponse.TBMy.mean = 0;
-%     cur_surResponse.TBMz.mean = 0;
-%     cur_surResponse.BRMx.mean = 0;
-%     cur_surResponse.BRMy.mean = 0;
-%     cur_surResponse.BRMz.mean = 0;
-%     cur_surResponse.BROop.mean = 0;
-%     cur_surResponse.BRIp.mean = 0;
-%     cur_surResponse.TTMx.mean = 0;
-%     cur_surResponse.TTMy.mean = 0;
-%     cur_surResponse.TTMz.mean = 0;
-%     cur_surResponse.TTMz.mean = 0;
-%     cur_surResponse.LSSMy.mean = 0;
-%     cur_surResponse.LSSMz.mean = 0;
-%     cur_surResponse.LSSTq.mean = 0;
-%
-%     cur_surResponse.TBMx.std = 0;
-%     cur_surResponse.TBMy.std = 0;
-%     cur_surResponse.TBMz.std = 0;
-%     cur_surResponse.BRMx.std = 0;
-%     cur_surResponse.BRMy.std = 0;
-%     cur_surResponse.BRMz.std = 0;
-%     cur_surResponse.BROop.std = 0;
-%     cur_surResponse.BRIp.std = 0;
-%     cur_surResponse.TTMx.std = 0;
-%     cur_surResponse.TTMy.std = 0;
-%     cur_surResponse.TTMz.std = 0;
-%     cur_surResponse.TTMz.std = 0;
-%     cur_surResponse.LSSMy.std = 0;
-%     cur_surResponse.LSSMz.std = 0;
-%     cur_surResponse.LSSTq.std = 0;
-% end
-%
-% if isempty(instVec)
-%     DELinst.TBMx.mean  = cur_surResponse.TBMx.mean ;
-%     DELinst.TBMy.mean  = cur_surResponse.TBMy.mean ;
-%     DELinst.TBMz.mean  = cur_surResponse.TBMz.mean ;
-%     DELinst.BRMx.mean  = cur_surResponse.BRMx.mean ;
-%     DELinst.BRMy.mean  = cur_surResponse.BRMy.mean ;
-%     DELinst.BRMz.mean  = cur_surResponse.BRMz.mean ;
-%     DELinst.BROop.mean = cur_surResponse.BROop.mean ;
-%     DELinst.BRIp.mean  = cur_surResponse.BRIp.mean ;
-%     DELinst.TTMx.mean  = cur_surResponse.TTMx.mean ;
-%     DELinst.TTMy.mean  = cur_surResponse.TTMy.mean ;
-%     DELinst.TTMz.mean  = cur_surResponse.TTMz.mean ;
-%     DELinst.LSSMy.mean = cur_surResponse.LSSMy.mean ;
-%     DELinst.LSSMz.mean = cur_surResponse.LSSMz.mean ;
-%     DELinst.LSSTq.mean = cur_surResponse.LSSTq.mean ;
-%
-%     DELinst.TBMx.std  = cur_surResponse.TBMx.std ;
-%     DELinst.TBMy.std  = cur_surResponse.TBMy.std ;
-%     DELinst.TBMz.std  = cur_surResponse.TBMz.std ;
-%     DELinst.BRMx.std  = cur_surResponse.BRMx.std ;
-%     DELinst.BRMy.std  = cur_surResponse.BRMy.std ;
-%     DELinst.BRMz.std  = cur_surResponse.BRMz.std ;
-%     DELinst.BROop.std = cur_surResponse.BROop.std ;
-%     DELinst.BRIp.std  = cur_surResponse.BRIp.std ;
-%     DELinst.TTMx.std  = cur_surResponse.TTMx.std ;
-%     DELinst.TTMy.std  = cur_surResponse.TTMy.std ;
-%     DELinst.TTMz.std  = cur_surResponse.TTMz.std ;
-%     DELinst.LSSMy.std = cur_surResponse.LSSMy.std ;
-%     DELinst.LSSMz.std = cur_surResponse.LSSMz.std ;
-%     DELinst.LSSTq.std = cur_surResponse.LSSTq.std ;
-% else
-%     DELinst.TBMx.mean  = [instVec.TBMx.mean ;cur_surResponse.TBMx.mean] ;
-%     DELinst.TBMy.mean  = [instVec.TBMy.mean ;cur_surResponse.TBMy.mean] ;
-%     DELinst.TBMz.mean  = [instVec.TBMz.mean ;cur_surResponse.TBMz.mean] ;
-%     DELinst.BRMx.mean  = [instVec.BRMx.mean ;cur_surResponse.BRMx.mean] ;
-%     DELinst.BRMy.mean  = [instVec.BRMy.mean ;cur_surResponse.BRMy.mean] ;
-%     DELinst.BRMz.mean  = [instVec.BRMz.mean ;cur_surResponse.BRMz.mean] ;
-%     DELinst.BROop.mean = [instVec.BROop.mean ;cur_surResponse.BROop.mean] ;
-%     DELinst.BRIp.mean  = [instVec.BRIp.mean ;cur_surResponse.BRIp.mean];
-%     DELinst.TTMx.mean  = [instVec.TTMx.mean ;cur_surResponse.TTMx.mean] ;
-%     DELinst.TTMy.mean  = [instVec.TTMy.mean ;cur_surResponse.TTMy.mean] ;
-%     DELinst.TTMz.mean  = [instVec.TTMz.mean ;cur_surResponse.TTMz.mean] ;
-%     DELinst.LSSMy.mean = [instVec.LSSMy.mean ;cur_surResponse.LSSMy.mean] ;
-%     DELinst.LSSMz.mean = [instVec.LSSMz.mean ;cur_surResponse.LSSMz.mean] ;
-%     DELinst.LSSTq.mean = [instVec.LSSTq.mean ;cur_surResponse.LSSTq.mean] ;
-%
-%     DELinst.TBMx.std  = [instVec.TBMx.std ;cur_surResponse.TBMx.std] ;
-%     DELinst.TBMy.std  = [instVec.TBMy.std ;cur_surResponse.TBMy.std] ;
-%     DELinst.TBMz.std  = [instVec.TBMz.std ;cur_surResponse.TBMz.std] ;
-%     DELinst.BRMx.std  = [instVec.BRMx.std ;cur_surResponse.BRMx.std] ;
-%     DELinst.BRMy.std  = [instVec.BRMy.std ;cur_surResponse.BRMy.std] ;
-%     DELinst.BRMz.std  = [instVec.BRMz.std ;cur_surResponse.BRMz.std] ;
-%     DELinst.BROop.std = [instVec.BROop.std ;cur_surResponse.BROop.std] ;
-%     DELinst.BRIp.std  = [instVec.BRIp.std ;cur_surResponse.BRIp.std];
-%     DELinst.TTMx.std  = [instVec.TTMx.std ;cur_surResponse.TTMx.std] ;
-%     DELinst.TTMy.std  = [instVec.TTMy.std ;cur_surResponse.TTMy.std] ;
-%     DELinst.TTMz.std  = [instVec.TTMz.std ;cur_surResponse.TTMz.std] ;
-%     DELinst.LSSMy.std = [instVec.LSSMy.std ;cur_surResponse.LSSMy.std] ;
-%     DELinst.LSSMz.std = [instVec.LSSMz.std ;cur_surResponse.LSSMz.std] ;
-%     DELinst.LSSTq.std = [instVec.LSSTq.std ;cur_surResponse.LSSTq.std] ;
-% end
-% end
-
-%
-% function DAMinst = assignInstDAM(cur_surResponse,instVec,flagoff)
-% if flagoff ==1
-%     cur_surResponse.TBMx.mean = 0;
-%     cur_surResponse.TBMy.mean = 0;
-%     cur_surResponse.TBMz.mean = 0;
-%     cur_surResponse.BRMx.mean = 0;
-%     cur_surResponse.BRMy.mean = 0;
-%     cur_surResponse.BRMz.mean = 0;
-%     cur_surResponse.BROop.mean = 0;
-%     cur_surResponse.BRIp.mean = 0;
-%     cur_surResponse.TTMx.mean = 0;
-%     cur_surResponse.TTMy.mean = 0;
-%     cur_surResponse.TTMz.mean = 0;
-%     cur_surResponse.TTMz.mean = 0;
-%     cur_surResponse.LSSMy.mean = 0;
-%     cur_surResponse.LSSMz.mean = 0;
-%     cur_surResponse.LSSTq.mean = 0;
-%
-%     cur_surResponse.TBMx.std = 0;
-%     cur_surResponse.TBMy.std = 0;
-%     cur_surResponse.TBMz.std = 0;
-%     cur_surResponse.BRMx.std = 0;
-%     cur_surResponse.BRMy.std = 0;
-%     cur_surResponse.BRMz.std = 0;
-%     cur_surResponse.BROop.std = 0;
-%     cur_surResponse.BRIp.std = 0;
-%     cur_surResponse.TTMx.std = 0;
-%     cur_surResponse.TTMy.std = 0;
-%     cur_surResponse.TTMz.std = 0;
-%     cur_surResponse.TTMz.std = 0;
-%     cur_surResponse.LSSMy.std = 0;
-%     cur_surResponse.LSSMz.std = 0;
-%     cur_surResponse.LSSTq.std = 0;
-% end
-%
-% if isempty(instVec)
-%     DAMinst.TBMx.mean  = (cur_surResponse.TBMx.mean^4)*3600 ;
-%     DAMinst.TBMy.mean  = (cur_surResponse.TBMy.mean^4)*3600 ;
-%     DAMinst.TBMz.mean  = (cur_surResponse.TBMz.mean^4)*3600 ;
-%     DAMinst.BRMx.mean  = (cur_surResponse.BRMx.mean^10)*3600 ;
-%     DAMinst.BRMy.mean  = (cur_surResponse.BRMy.mean^10)*3600 ;
-%     DAMinst.BRMz.mean  = (cur_surResponse.BRMz.mean^10)*3600 ;
-%     DAMinst.BROop.mean = (cur_surResponse.BROop.mean^10)*3600 ;
-%     DAMinst.BRIp.mean  = (cur_surResponse.BRIp.mean^10)*3600 ;
-%     DAMinst.TTMx.mean  = (cur_surResponse.TTMx.mean^4)*3600 ;
-%     DAMinst.TTMy.mean  = (cur_surResponse.TTMy.mean^4)*3600 ;
-%     DAMinst.TTMz.mean  = (cur_surResponse.TTMz.mean^4)*3600 ;
-%     DAMinst.LSSMy.mean = (cur_surResponse.LSSMy.mean^4)*3600 ;
-%     DAMinst.LSSMz.mean = (cur_surResponse.LSSMz.mean^4)*3600 ;
-%     DAMinst.LSSTq.mean = (cur_surResponse.LSSTq.mean^4)*3600 ;
-%
-%     DAMinst.TBMx.std  = (cur_surResponse.TBMx.std^4)*3600 ;
-%     DAMinst.TBMy.std  = (cur_surResponse.TBMy.std^4)*3600 ;
-%     DAMinst.TBMz.std  = (cur_surResponse.TBMz.std^4)*3600 ;
-%     DAMinst.BRMx.std  = (cur_surResponse.BRMx.std^10)*3600 ;
-%     DAMinst.BRMy.std  = (cur_surResponse.BRMy.std^10)*3600 ;
-%     DAMinst.BRMz.std  = (cur_surResponse.BRMz.std^10)*3600 ;
-%     DAMinst.BROop.std = (cur_surResponse.BROop.std^10)*3600 ;
-%     DAMinst.BRIp.std  = (cur_surResponse.BRIp.std^10)*3600 ;
-%     DAMinst.TTMx.std  = (cur_surResponse.TTMx.std^4)*3600 ;
-%     DAMinst.TTMy.std  = (cur_surResponse.TTMy.std^4)*3600 ;
-%     DAMinst.TTMz.std  = (cur_surResponse.TTMz.std^4)*3600 ;
-%     DAMinst.LSSMy.std = (cur_surResponse.LSSMy.std^4)*3600 ;
-%     DAMinst.LSSMz.std = (cur_surResponse.LSSMz.std^4)*3600 ;
-%     DAMinst.LSSTq.std = (cur_surResponse.LSSTq.std^4)*3600 ;
-% else
-%     DAMinst.TBMx.mean  = [instVec.TBMx.mean ;(cur_surResponse.TBMx.mean^4)*3600] ;
-%     DAMinst.TBMy.mean  = [instVec.TBMy.mean ;(cur_surResponse.TBMy.mean^4)*3600] ;
-%     DAMinst.TBMz.mean  = [instVec.TBMz.mean ;(cur_surResponse.TBMx.mean^4)*3600];
-%     DAMinst.BRMx.mean  = [instVec.BRMx.mean ;(cur_surResponse.BRMx.mean^10)*3600];
-%     DAMinst.BRMy.mean  = [instVec.BRMy.mean ;(cur_surResponse.BRMy.mean^10)*3600];
-%     DAMinst.BRMz.mean  = [instVec.BRMz.mean ;(cur_surResponse.BRMz.mean^10)*3600];
-%     DAMinst.BROop.mean = [instVec.BROop.mean ;(cur_surResponse.BROop.mean^10)*3600];
-%     DAMinst.BRIp.mean  = [instVec.BRIp.mean ;(cur_surResponse.BRIp.mean^10)*3600];
-%     DAMinst.TTMx.mean  = [instVec.TTMx.mean ;(cur_surResponse.TTMx.mean^4)*3600] ;
-%     DAMinst.TTMy.mean  = [instVec.TTMy.mean ;(cur_surResponse.TTMy.mean^4)*3600] ;
-%     DAMinst.TTMz.mean  = [instVec.TTMz.mean ;(cur_surResponse.TTMz.mean^4)*3600] ;
-%     DAMinst.LSSMy.mean = [instVec.LSSMy.mean ;(cur_surResponse.LSSMy.mean^4)*3600] ;
-%     DAMinst.LSSMz.mean = [instVec.LSSMz.mean ;(cur_surResponse.LSSMz.mean^4)*3600] ;
-%     DAMinst.LSSTq.mean = [instVec.LSSTq.mean ;(cur_surResponse.LSSTq.mean^4)*3600] ;
-%
-%     DAMinst.TBMx.std  = [instVec.TBMx.std ;(cur_surResponse.TBMx.std^4)*3600] ;
-%     DAMinst.TBMy.std  = [instVec.TBMy.std ;(cur_surResponse.TBMy.std^4)*3600] ;
-%     DAMinst.TBMz.std  = [instVec.TBMz.std ;(cur_surResponse.TBMx.std^4)*3600];
-%     DAMinst.BRMx.std  = [instVec.BRMx.std ;(cur_surResponse.BRMx.std^10)*3600];
-%     DAMinst.BRMy.std  = [instVec.BRMy.std ;(cur_surResponse.BRMy.std^10)*3600];
-%     DAMinst.BRMz.std  = [instVec.BRMz.std ;(cur_surResponse.BRMz.std^10)*3600];
-%     DAMinst.BROop.std = [instVec.BROop.std ;(cur_surResponse.BROop.std^10)*3600];
-%     DAMinst.BRIp.std  = [instVec.BRIp.std ;(cur_surResponse.BRIp.std^10)*3600];
-%     DAMinst.TTMx.std  = [instVec.TTMx.std ;(cur_surResponse.TTMx.std^4)*3600] ;
-%     DAMinst.TTMy.std  = [instVec.TTMy.std ;(cur_surResponse.TTMy.std^4)*3600] ;
-%     DAMinst.TTMz.std  = [instVec.TTMz.std ;(cur_surResponse.TTMz.std^4)*3600] ;
-%     DAMinst.LSSMy.std = [instVec.LSSMy.std ;(cur_surResponse.LSSMy.std^4)*3600] ;
-%     DAMinst.LSSMz.std = [instVec.LSSMz.std ;(cur_surResponse.LSSMz.std^4)*3600] ;
-%     DAMinst.LSSTq.std = [instVec.LSSTq.std ;(cur_surResponse.LSSTq.std^4)*3600] ;
-% end
-% end
-%
-% function DAMcum = assignCumDEL(instVal,cumVal_prev)
-%
-% DAMcum.TBMx.mean  = [cumVal_prev.TBMx.mean; instVal.TBMx.mean(end)+ cumVal_prev.TBMx.mean(end)];
-% DAMcum.TBMy.mean  = [cumVal_prev.TBMy.mean; instVal.TBMy.mean(end)+ cumVal_prev.TBMy.mean(end)];
-% DAMcum.TBMz.mean  = [cumVal_prev.TBMz.mean; instVal.TBMz.mean(end)+ cumVal_prev.TBMz.mean(end)];
-% DAMcum.BRMx.mean  = [cumVal_prev.BRMx.mean; instVal.BRMx.mean(end)+ cumVal_prev.BRMx.mean(end)];
-% DAMcum.BRMy.mean  = [cumVal_prev.BRMy.mean; instVal.BRMy.mean(end)+ cumVal_prev.BRMy.mean(end)];
-% DAMcum.BRMz.mean  = [cumVal_prev.BRMz.mean; instVal.BRMz.mean(end)+ cumVal_prev.BRMz.mean(end)];
-% DAMcum.BROop.mean = [cumVal_prev.BROop.mean; instVal.BROop.mean(end)+ cumVal_prev.BROop.mean(end)];
-% DAMcum.BRIp.mean  = [cumVal_prev.BRIp.mean; instVal.BRIp.mean(end)+ cumVal_prev.BRIp.mean(end)];
-% DAMcum.TTMx.mean  = [cumVal_prev.TTMx.mean; instVal.TTMx.mean(end)+ cumVal_prev.TTMx.mean(end)];
-% DAMcum.TTMy.mean  = [cumVal_prev.TTMy.mean; instVal.TTMy.mean(end)+ cumVal_prev.TTMy.mean(end)];
-% DAMcum.TTMz.mean  = [cumVal_prev.TTMz.mean; instVal.TTMz.mean(end)+ cumVal_prev.TTMz.mean(end)];
-% DAMcum.LSSMy.mean = [cumVal_prev.LSSMy.mean; instVal.LSSMy.mean(end)+ cumVal_prev.LSSMy.mean(end)];
-% DAMcum.LSSMz.mean = [cumVal_prev.LSSMz.mean; instVal.LSSMz.mean(end)+ cumVal_prev.LSSMz.mean(end)];
-% DAMcum.LSSTq.mean = [cumVal_prev.LSSTq.mean; instVal.LSSTq.mean(end)+ cumVal_prev.LSSTq.mean(end)];
-% end
-%
-% function ControlActivity = getCntPercentage(CnttrCell)
-% for i = 1:length(CnttrCell)
-%     if strcmp(CnttrCell{i},'ShutDown')
-%         countCont(i) = 0;
-%     elseif strcmp(CnttrCell{i},'constTSR')
-%         countCont(i) = 1;
-%     elseif strcmp(CnttrCell{i},'constTSR_IPC')
-%         countCont(i) = 2;
-%     elseif strcmp(CnttrCell{i},'lin70')
-%         countCont(i) = 3;
-%     elseif strcmp(CnttrCell,'lin70_IPC')
-%         countCont(i) = 4; %#ok<*AGROW>
-%     end
-% end
-% ControlActivity.Shuts    = 100*sum(countCont==0)/length(CnttrCell);
-% ControlActivity.constTSR = 100*sum(countCont==1)/length(CnttrCell);
-% ControlActivity.constTSR_IPC = 100*sum(countCont==2)/length(CnttrCell);
-% ControlActivity.li70     = 100*sum(countCont==3)/length(CnttrCell);
-% ControlActivity.li70_IPC = 100*sum(countCont==4)/length(CnttrCell);
-%
-% end
