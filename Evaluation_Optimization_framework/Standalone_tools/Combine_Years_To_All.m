@@ -7,17 +7,15 @@ close all
 % effect. The files Areadded in the order defined
 
 %% INputs
-% pathbase= 'D:\data\34_pettas\PhD\Optimization\Final\Baseline Results all\Spline\';
-pathbase= 'D:\data\34_pettas\PhD\Optimization\Final\Baseline Results all\v3_Spline\';
-% pathopt = 'D:\data\34_pettas\PhD\Optimization\Final\P_IBC_Shut_opt\Best\';
-% pathopt ='D:\data\34_pettas\PhD\Optimization\Final\P_IBC_Shut_opt_Horizons\';
-pathopt ='D:\data\34_pettas\PhD\Optimization\Final\ConstantPrices\PerYear\';
+
+pathbase= 'YourPath\';
+pathopt ='YourPath\';
 
 
 OptFiles = {...
-    'DE_2016_constPr_DA_P130_REV_constTSR'
-    'DE_2017_constPr_DA_P130_REV_constTSR'
-    'DE_2018_constPr_DA_P130_REV_constTSR'
+    'File1'
+    'File2'
+    'File3'
     }';
 
 
@@ -35,7 +33,6 @@ for i = 1:length(OptFiles)
 end
 Baseline = load([pathbase BaseFile{1}]);
 
-% Output.Time{1,1} = datetime;
 Output.Time{1,2} = [];
 
 Output.V                  =[];
@@ -102,7 +99,6 @@ Output.cum.DAM.TTMz      = [];
 Output.cum.DAM.LSSMy     = [];
 Output.cum.DAM.LSSMz     = [];
 Output.cum.DAM.LSSTq     = [];
-% Output.cum.     = [];
 
 for i = 1:length(OptFiles)
     if i ==1

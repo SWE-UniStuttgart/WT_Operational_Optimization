@@ -7,17 +7,18 @@ close all
 % effect. The files Areadded in the order defined
 
 
-pathbase= 'D:\data\34_pettas\PhD\Optimization\Final\Baseline Results all\Spline\';
-pathopt = 'D:\data\34_pettas\PhD\Optimization\Final\P_IBC_Shut_opt\';
+pathbase= 'YourPath\';
+pathopt = 'YourPath\\';
+
 OptFiles = {...
-'DE_2016_REV';
-'DE_2017_REV';
-'DE_2018_REV';
+    'FileOpt1'
+    'FileOpt2'
+    'FileOpt3'
  }';
 BaseFiles = {
-    'Baseline_DE_2016_spl'
-    'Baseline_DE_2017_spl'
-    'Baseline_DE_2018_spl'
+    'FileBase1'
+    'FileBase2'
+    'FileBase3'
     };
 
 sensors= {
