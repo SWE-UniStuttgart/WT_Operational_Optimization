@@ -1,4 +1,4 @@
-# WT_Operational_Optimization
+# Wind Turbine Operational Optimization
 Evaluation/optimization framework for fatigue damage and revenue accumulation using adaptive control based on electricity prices and wind conditions. It includes the work done in the PhD thesis "Wind turbine operational optimization considering revenue and fatigue damage objectives" and relevant publications by Vasilis Pettas.
 
 The main script is **_Evaluation_Optimization_Framework.m_**. Here the user can define the input data and choose the different options allowing for simulation with different operational approaches. The various operational modes and optimization approaches can be selected and adjusted in the script's **INPUTS** and **Control mode options** sections. The out-of-the-box setup allows users to test all modes with the predefined configurations and familiarize themselves with the available settings. 
