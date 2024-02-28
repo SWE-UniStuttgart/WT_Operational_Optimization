@@ -16,7 +16,6 @@ The framework is developed and tested with Matlab 2021b on a Windows machine.
 Details about the different options and definitions can be found in the comments included in the source code.
 
 
-
 # Related repositories
 
 The surrogate models including the Gaussian process regression model (not included here) and relevant code for creating and generating the prediction of the surrogates can be found at https://doi.org/10.5281/zenodo.10092271
@@ -26,7 +25,7 @@ Result files from the application of the framework presented in the PhD thesis a
 
 # Related publications
 
-Pettas V., Wind turbine operational optimization considering revenue and fatigue damage objectives, Ph.D. dissertation Wind Energy, University of Stuttgart, 2024
+Pettas V., Wind turbine operational optimization considering revenue and fatigue damage objectives, Ph.D. dissertation Wind Energy, University of Stuttgart, 2024 http://dx.doi.org/10.18419/opus-13959
 
 Pettas V., Cheng P. W.: Surrogate modeling and aeroelastic response of a wind turbine with down-regulation, power boosting and individual blade pitch control capabilities, submitted, Energies 2024
 
