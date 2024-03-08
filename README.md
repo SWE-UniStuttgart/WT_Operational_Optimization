@@ -27,8 +27,8 @@ Result files from the application of the framework presented in the PhD thesis a
 
 Pettas V., Wind turbine operational optimization considering revenue and fatigue damage objectives, Ph.D. dissertation Wind Energy, University of Stuttgart, 2024 http://dx.doi.org/10.18419/opus-13959
 
-Pettas V., Cheng P. W.: Surrogate modeling and aeroelastic response of a wind turbine with down-regulation, power boosting and individual blade pitch control capabilities, submitted, Energies 2024
+Pettas V, Cheng PW. Surrogate Modeling and Aeroelastic Analysis of a Wind Turbine with Down-Regulation, Power Boosting, and IBC Capabilities. Energies. 2024; 17(6):1284. https://doi.org/10.3390/en17061284
 
 Pettas V., Cheng P. W.: Operational optimization of wind turbines for revenue and fatigue objectives considering wind conditions and electricity prices, in preparation, Wind Energy 2024
 
-Kölle K., Göçmen T., T., Eguinoa, I., Alcayaga Roman, L. A., Aparicio-Sanchez, M., Feng, J., Meyers, J., Pettas, V., and Sood, I.: FarmConners market showcase results: wind farm flow control considering electricity prices, Wind Energ. Sci., 7, 2181–2200, https://doi.org/10.5194/wes-7-2181-2022,2022.
+Kölle K., Göçmen T., T., Eguinoa, I., Alcayaga Roman, L. A., Aparicio-Sanchez, M., Feng, J., Meyers, J., Pettas, V., and Sood, I.: FarmConners market showcase results: wind farm flow control considering electricity prices, Wind Energ. Sci., 7, 2181–2200, https://doi.org/10.5194/wes-7-2181-2022 , 2022.
