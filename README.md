@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/737094515.svg)](https://zenodo.org/doi/10.5281/zenodo.13344218)
 # Wind Turbine Operational Optimization
 Evaluation/optimization framework for fatigue damage and revenue accumulation using adaptive control based on electricity prices and wind conditions. It includes the work done in the PhD thesis "Wind turbine operational optimization considering revenue and fatigue damage objectives" at the University of Stuttgart and related publications by Vasilis Pettas.
 
